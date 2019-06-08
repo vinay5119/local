@@ -1,0 +1,108 @@
+import java.util.*;
+public class Oddpages
+{
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+Document d[]=new Document[4];
+for(int i=0;i<4;i++)
+{
+int id=sc.nextInt();sc.nextLine();
+String name=sc.nexLine();
+String Book=sc.nextLine();
+int pages=sc.nextInt();
+d[i]=new Document(id,name,Book,pages);
+}
+Document d1[]=sortingoddpages(d);
+for(Document x:d1)
+System.out.println(x.getId()+" "+x.getName()+" "+x.getBook()+" "+x.getPages());
+}
+public static Document[] sortingoddpages(Document d[])
+{
+int count=0;
+for(Document x1:d)
+{
+if(x1.getId()%2!=0)
+count++;
+}
+Document d1[]=new Document[count];
+count=0;
+for(Document x1:d)
+{
+if(x1.getId()%2!=0)
+{
+d1[count++]=x1;
+}
+}
+Document temp;
+for(int i=0;i<d1.length;i++)
+{
+for(int j=i+1;j<d1.length;j++)
+{
+if(d1[i].getPages()>d1[j].getPages())
+{
+temp=d1[i];
+d1[i]=d1[j];
+d1[j]=temp;
+}
+}
+}
+return temp;
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+class Document
+{
+private   int id;
+private String Book;
+private String name;
+private int pages;
+public Document(int id,String Book,String name,int pages)
+{
+this.id=id;
+this.Book=Book;
+this.name=name;
+this.pages=pages;
+}
+public  void setId(int id)
+{
+this.id=id;
+}
+public void setBook(String Book)
+{
+this.Book=Book;
+}
+public void setPages(int pages)
+{
+this.pages=pages;
+}
+public int getId()
+{
+return id;
+}
+public String getName()
+{
+return name;
+}
+public String getBook()
+{
+return Book;
+}
+public int getPages()
+{
+return pages;
+}
+}
