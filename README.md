@@ -1,2 +1,2 @@
 # local
-local repo
+local repo for git commands and to learn some basics
